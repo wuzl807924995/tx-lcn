@@ -29,6 +29,7 @@ public class AspectBeforeServiceImpl implements AspectBeforeService {
     private Logger logger = LoggerFactory.getLogger(AspectBeforeServiceImpl.class);
 
 
+    @Override
     public Object around(String groupId, ProceedingJoinPoint point) throws Throwable {
 
         MethodSignature signature = (MethodSignature) point.getSignature();

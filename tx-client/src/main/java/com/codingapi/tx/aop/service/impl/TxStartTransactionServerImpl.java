@@ -9,7 +9,6 @@ import com.codingapi.tx.framework.task.TaskGroupManager;
 import com.codingapi.tx.framework.task.TaskState;
 import com.codingapi.tx.framework.task.TxTask;
 import com.codingapi.tx.netty.service.MQTxManagerService;
-import com.lorne.core.framework.utils.KidUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
