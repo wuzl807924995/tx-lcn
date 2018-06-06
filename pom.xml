@@ -5,7 +5,7 @@
 
     <groupId>com.codingapi</groupId>
     <artifactId>tx-lcn</artifactId>
-    <version>4.1.0</version>
+    <version>4.2.0</version>
     <packaging>pom</packaging>
 
     <name>tx-lcn</name>
@@ -16,9 +16,7 @@
         <module>tx-client</module>
         <module>tx-manager</module>
 
-        <module>transaction-dubbo</module>
         <module>transaction-springcloud</module>
-        <module>transaction-motan</module>
 
         <module>tx-plugins-db</module>
     </modules>
@@ -32,9 +30,39 @@
         <java.version>1.7</java.version>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 
-        <lcn.last.version>4.1.0</lcn.last.version>
+        <lcn.last.version>4.2.0</lcn.last.version>
+        <spring-cloud.version>Edgware.SR3</spring-cloud.version>
     </properties>
 
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.13.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+
+    </dependencies>
 
 
     <licenses>

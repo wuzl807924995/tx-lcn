@@ -14,6 +14,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,6 +31,8 @@ public class TxStartTransactionServerImpl implements TransactionServer {
     @Autowired
     protected MQTxManagerService txManagerService;
 
+    @Autowired
+    private Tracer tracer;
 
     @Override
     public Object execute(ProceedingJoinPoint point,final TxTransactionInfo info) throws Throwable {
@@ -41,7 +44,7 @@ public class TxStartTransactionServerImpl implements TransactionServer {
 
         int state = 0;
 
-        final String groupId = TxCompensateLocal.current()==null?KidUtils.generateShortUuid():TxCompensateLocal.current().getGroupId();
+        final String groupId = tracer.getCurrentSpan().traceIdString();
 
         //创建事务组
         txManagerService.createTransactionGroup(groupId);
