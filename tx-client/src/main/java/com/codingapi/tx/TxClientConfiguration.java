@@ -1,5 +1,7 @@
 package com.codingapi.tx;
 
+import com.codingapi.tx.config.TxConfig;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,8 +11,13 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan
-public class TransactionConfiguration {
+public class TxClientConfiguration {
 
+
+    @Bean
+    public TxConfig txConfig(){
+        return new TxConfig();
+    }
 
 
 }

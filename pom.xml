@@ -15,10 +15,6 @@
     <modules>
         <module>tx-client</module>
         <module>tx-manager</module>
-
-        <module>transaction-springcloud</module>
-
-        <module>tx-plugins-db</module>
     </modules>
 
     <properties>

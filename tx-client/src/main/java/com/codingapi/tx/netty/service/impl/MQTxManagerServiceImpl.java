@@ -1,11 +1,10 @@
 package com.codingapi.tx.netty.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.codingapi.tx.aop.bean.TxCompensateLocal;
 import com.codingapi.tx.aop.bean.TxTransactionInfo;
 import com.codingapi.tx.compensate.model.CompensateInfo;
 import com.codingapi.tx.compensate.service.CompensateService;
-import com.codingapi.tx.config.ConfigReader;
+import com.codingapi.tx.config.TxConfig;
 import com.codingapi.tx.framework.utils.SerializerUtils;
 import com.codingapi.tx.framework.utils.SocketManager;
 import com.codingapi.tx.listener.service.ModelNameService;
@@ -28,7 +27,7 @@ public class MQTxManagerServiceImpl implements MQTxManagerService {
     private ModelNameService modelNameService;
 
     @Autowired
-    private ConfigReader configReader;
+    private TxConfig txConfig;
 
     @Autowired
     private CompensateService compensateService;
@@ -100,7 +99,7 @@ public class MQTxManagerServiceImpl implements MQTxManagerService {
 
     @Override
     public int cleanNotifyTransactionHttp(String groupId, String waitTaskId) {
-        String url = configReader.getTxUrl() + "cleanNotifyTransactionHttp?groupId=" + groupId + "&taskId=" + waitTaskId;
+        String url = txConfig.getUrl() + "cleanNotifyTransactionHttp?groupId=" + groupId + "&taskId=" + waitTaskId;
         String clearRes = managerHelper.httpGet(url);
         if(clearRes==null){
             return -1;
@@ -111,7 +110,7 @@ public class MQTxManagerServiceImpl implements MQTxManagerService {
 
     @Override
     public String httpGetServer() {
-        String url = configReader.getTxUrl() + "getServer";
+        String url = txConfig.getUrl() + "getServer";
         return managerHelper.httpGet(url);
     }
 
@@ -133,7 +132,7 @@ public class MQTxManagerServiceImpl implements MQTxManagerService {
 
         CompensateInfo compensateInfo = new CompensateInfo(currentTime, modelName, uniqueKey, data, methodStr, className, groupId, address, time,startError);
 
-        String json = managerHelper.httpPost(configReader.getTxUrl() + "sendCompensateMsg", compensateInfo.toParamsString());
+        String json = managerHelper.httpPost(txConfig.getUrl() + "sendCompensateMsg", compensateInfo.toParamsString());
 
         compensateInfo.setResJson(json);
 
