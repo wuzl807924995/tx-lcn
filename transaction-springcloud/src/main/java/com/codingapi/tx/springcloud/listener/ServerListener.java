@@ -15,7 +15,7 @@ public class ServerListener implements  ApplicationListener<ApplicationStartedEv
 
     private Logger logger = LoggerFactory.getLogger(ServerListener.class);
 
-    @Value("${spring.port}")
+    @Value("${server.port}")
     private int serverPort;
 
     @Autowired

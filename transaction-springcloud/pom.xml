@@ -11,7 +11,7 @@
 
 	<groupId>com.codingapi</groupId>
 	<artifactId>transaction-springcloud</artifactId>
-	<version>4.1.0-20181109-1113</version>
+	<version>4.1.0-20181109-1316</version>
 
 
 	<name>transaction-springcloud</name>
