@@ -11,7 +11,7 @@
 
     <groupId>com.codingapi</groupId>
     <artifactId>tx-client</artifactId>
-    <version>${lcn.last.version}</version>
+    <version>4.1.0-20181119-1910</version>
 
     <name>tx-client</name>
     <url>https://github.com/codingapi/tx-lcn</url>
@@ -122,5 +122,18 @@
 
     </dependencies>
 
+    <!-- 仓库 写 -->
+    <distributionManagement>
+        <repository>
+            <id>bluestone_maven</id>
+            <name>bluestone maven</name>
+            <url>http://47.98.233.22:9005/nexus/content/repositories/releases/</url>
+        </repository>
 
+        <snapshotRepository>
+            <id>bluestone_maven</id>
+            <name>bluestone maven</name>
+            <url>http://47.98.233.22:9005/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
