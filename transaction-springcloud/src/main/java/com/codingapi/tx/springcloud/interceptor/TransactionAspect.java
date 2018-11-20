@@ -23,6 +23,13 @@ public class TransactionAspect implements Ordered {
     @Autowired
     private TxManagerInterceptor txManagerInterceptor;
 
+    public TxManagerInterceptor getTxManagerInterceptor() {
+        return txManagerInterceptor;
+    }
+
+    public void setTxManagerInterceptor(TxManagerInterceptor txManagerInterceptor) {
+        this.txManagerInterceptor = txManagerInterceptor;
+    }
 
     @Around("@annotation(com.codingapi.tx.annotation.TxTransaction)")
     public Object transactionRunning(ProceedingJoinPoint point)throws Throwable{

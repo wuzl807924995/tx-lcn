@@ -22,12 +22,18 @@ import java.lang.reflect.Method;
 @Service
 public class AspectBeforeServiceImpl implements AspectBeforeService {
 
+    private Logger logger = LoggerFactory.getLogger(AspectBeforeServiceImpl.class);
+
     @Autowired
     private TransactionServerFactoryService transactionServerFactoryService;
 
+    public TransactionServerFactoryService getTransactionServerFactoryService() {
+        return transactionServerFactoryService;
+    }
 
-    private Logger logger = LoggerFactory.getLogger(AspectBeforeServiceImpl.class);
-
+    public void setTransactionServerFactoryService(TransactionServerFactoryService transactionServerFactoryService) {
+        this.transactionServerFactoryService = transactionServerFactoryService;
+    }
 
     protected com.codingapi.tx.aop.bean.TxTransaction getConfigTxTransaction(ProceedingJoinPoint point, Class<?> clazz, Method thisMethod){
         TxTransaction transaction = thisMethod.getAnnotation(TxTransaction.class);
